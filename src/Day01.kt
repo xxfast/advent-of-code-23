@@ -1,17 +1,28 @@
 fun main() {
-  fun part1(input: List<String>): Int {
-    return input.size
+  fun List<String>.part1(): Int = sumOf { line ->
+    line
+      .filter { it.isDigit() }
+      .let { "${it.first()}${it.last()}".toInt() }
   }
 
-  fun part2(input: List<String>): Int {
-    return input.size
-  }
+  val numbers = listOf("one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
+    .mapIndexed { index, number -> (index + 1) to number }
 
-  // test if implementation meets criteria from the description, like:
-  val testInput = readInput("Day01_test")
-  check(part1(testInput) == 1)
+  fun List<String>.part2(): Int = map { line ->
+    line.fold("") { current, next -> numbers
+      .find { (_, number) -> "$current$next".contains(number) }
+      ?.let { (value, number) -> "$current$next".replace(number, "$value$next") }
+      ?: "$current$next"
+    }
+  }.part1()
 
   val input = readInput("Day01")
-  part1(input).println()
-  part2(input).println()
+
+  val test1Input = readInput("Day01.1.test")
+  check(test1Input.part1() == 142)
+  check(input.part1() == 54388)
+
+  val test2Input = readInput("Day01.2.test")
+  check(test2Input.part2() == 281)
+  check(input.part2() == 53515)
 }
