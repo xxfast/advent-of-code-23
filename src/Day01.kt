@@ -16,13 +16,13 @@ fun main() {
     }
   }.part1()
 
-  val input = readInput("Day01")
+  val input = readInputs("Day01")
 
-  val test1Input = readInput("Day01.1.test")
+  val test1Input = readInputs("Day01.1.test")
   check(test1Input.part1() == 142)
   check(input.part1() == 54388)
 
-  val test2Input = readInput("Day01.2.test")
+  val test2Input = readInputs("Day01.2.test")
   check(test2Input.part2() == 281)
   check(input.part2() == 53515)
 }

@@ -39,8 +39,8 @@ fun main() {
       reds * greens * blues
     }
 
-  val test1Input = readInput("Day02.test")
-  val input = readInput("Day02")
+  val test1Input = readInputs("Day02.test")
+  val input = readInputs("Day02")
 
   check(test1Input.part1() == 8)
   check(input.part1() == 2416)

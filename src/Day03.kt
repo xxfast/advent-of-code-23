@@ -68,8 +68,8 @@ fun main() {
         .reduce { previous, partNumber -> previous * partNumber }
     }
 
-  val test1Input = readInput("Day03.test")
-  val input = readInput("Day03")
+  val test1Input = readInputs("Day03.test")
+  val input = readInputs("Day03")
 
   check(test1Input.part1() == 4361)
   check(input.part1() == 532428)

@@ -33,8 +33,8 @@ fun main() {
       return total
     }
 
-  val test1Input = readInput("Day04.test")
-  val input = readInput("Day04")
+  val test1Input = readInputs("Day04.test")
+  val input = readInputs("Day04")
 
   check(test1Input.part1() == 13)
   check(input.part1() == 25004)
