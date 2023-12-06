@@ -10,7 +10,7 @@ fun main() {
     val mappings: List<Mapping> = almanac.drop(1).map { mappings ->
       mappings.split("\n").drop(1).map { line ->
         val (destination: Long, source: Long, length: Long) = line.split(" ").map { it.toLong() }
-        source..(source + length) to destination..(destination + length)
+        source..< source + length to destination..< (destination + length)
       }
     }
 
