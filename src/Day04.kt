@@ -1,13 +1,13 @@
-data class Card(val index: Int, val left: List<Int>, val right: List<Int>) {
+private data class Lottery(val index: Int, val left: List<Int>, val right: List<Int>) {
   val winnings: List<Int> = left.filter { number -> number in right }
 }
 
 fun main() {
-  fun List<String>.format(): List<Card> = mapIndexed { index, game ->
+  fun List<String>.format(): List<Lottery> = mapIndexed { index, game ->
     val (left, right) = game.substringAfter(":")
       .split("|")
       .map { it.trim().split(" ").filter { it.isNotBlank() }.map { it.toInt() } }
-    Card(index + 1, left, right)
+    Lottery(index + 1, left, right)
   }
 
   fun List<String>.part1(): Int = format()
@@ -26,7 +26,7 @@ fun main() {
         val count = process.count { it.index == index }
         process.removeAll { it.index == index }
         val winning = cards.first { it.index == index }.winnings.count()
-        val new: List<Card> = cards.subList(index, index + winning)
+        val new: List<Lottery> = cards.subList(index, index + winning)
         process += List(count) { new }.flatten()
         total += count
       }
